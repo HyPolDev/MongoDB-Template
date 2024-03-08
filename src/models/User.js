@@ -21,6 +21,12 @@ const UserSchema = new Schema({
         enum: ["user", "admin", "superadmin"],
         default: "user"
     },
+    favouriteBooks: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Book'
+        }
+    ]
 },
     {
         timestamps: true,
