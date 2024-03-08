@@ -24,6 +24,17 @@ export const register = async (req, res) => {
             })
         }
 
+        const user = await User.findOne({
+            email: email
+        })
+
+        if (user) {
+            return res.status(400).json({
+                succes: false,
+                message: "Email already in use",
+            })
+        }
+
         if (password.length < 6 || password.length > 20) {
             return res.status(400).json({
                 succes: false,
